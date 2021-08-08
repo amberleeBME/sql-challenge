@@ -1,6 +1,3 @@
-SELECT * FROM employees LIMIT 100;
-SELECT * FROM departments LIMIT 100;
-SELECT * FROM dept_emp LIMIT 100;
 -- Employee Queries
 
 -- 1. employee number, last name, first name, sex, and salary
@@ -64,4 +61,8 @@ INNER JOIN dept_emp de ON d.dept_no=de.dept_no
 INNER JOIN employees e ON de.emp_no=e.emp_no
 WHERE d.dept_name='Sales' OR d.dept_name='Development';
 
--- REMEMBER TO COMMIT! 8. in descending order: the frequency count of employee last names (i.e., how many employees share each last name)
+-- 8. in descending order: the frequency count of employee last names (i.e., how many employees share each last name)
+SELECT last_name AS "Last Name", COUNT(last_name)AS "Frequency"
+FROM employees e
+GROUP BY last_name
+ORDER BY "Frequency" DESC;
