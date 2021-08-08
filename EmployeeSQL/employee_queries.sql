@@ -2,12 +2,17 @@ SELECT * FROM employees LIMIT 100;
 -- Employee Queries
 
 -- 1. employee number, last name, first name, sex, and salary
-SELECT emp.emp_no AS "employee number", emp.last_name AS "last name", emp.first_name AS "first name", emp.sex, salaries.salary
+SELECT emp.emp_no AS "employee number", 
+emp.last_name AS "last name", 
+emp.first_name AS "first name", 
+emp.sex, salaries.salary
 FROM salaries
 INNER JOIN employees AS emp ON emp.emp_no=salaries.emp_no;
 
 -- 2. first name, last name, and hire date for employees who were hired in 1986
-SELECT first_name AS "first name", last_name AS "last name", hire_date As "hire date"
+SELECT first_name AS "first name", 
+last_name AS "last name", 
+hire_date As "hire date"
 FROM employees
 WHERE hire_date >= '01/01/1986' AND hire_date <= '12/31/1986';
 
@@ -30,8 +35,12 @@ FROM departments d
 INNER JOIN dept_emp dm ON d.dept_no = dm.dept_no
 INNER JOIN employees e ON dm.emp_no=e.emp_no;
 
--- REMEMBER TO COMMIT! 5. first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B"
-
+-- 5. first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B"
+SELECT first_name AS "first name", 
+last_name AS "last name", 
+sex
+FROM employees
+WHERE first_name= 'Hercules' AND last_name LIKE 'B%';
 
 -- REMEMBER TO COMMIT! 6. all employees in the Sales department, their employee number, last name, first name, and department name
 
