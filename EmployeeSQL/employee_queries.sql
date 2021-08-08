@@ -1,4 +1,6 @@
 SELECT * FROM employees LIMIT 100;
+SELECT * FROM departments LIMIT 100;
+SELECT * FROM dept_emp LIMIT 100;
 -- Employee Queries
 
 -- 1. employee number, last name, first name, sex, and salary
@@ -42,8 +44,15 @@ sex
 FROM employees
 WHERE first_name= 'Hercules' AND last_name LIKE 'B%';
 
--- REMEMBER TO COMMIT! 6. all employees in the Sales department, their employee number, last name, first name, and department name
-
+-- 6. all employees in the Sales department: employee number, last name, first name, and department name
+SELECT de.emp_no AS "employee number",
+e.last_name AS "last name",
+e.first_name AS "first name",
+d.dept_name AS "department name"
+FROM departments d
+INNER JOIN dept_emp de ON d.dept_no=de.dept_no
+INNER JOIN employees e ON de.emp_no=e.emp_no
+WHERE d.dept_name='Sales';
 
 -- REMEMBER TO COMMIT! 7. all employees in the Sales *AND* Development departments, their employee number, last name, first name, and department name
 
