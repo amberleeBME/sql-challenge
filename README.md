@@ -5,13 +5,13 @@
 
 
 ### Table Schema
-* Tables were created and imported in the following order:
-    1. titles
-    2. employees
-    3. departments
-    4. dept_manager
-    5. dept_emp
-    6. salaries
+Tables were created and imported in the following order:
+1. titles
+2. employees
+3. departments
+4. dept_manager
+5. dept_emp
+6. salaries
 
 * Primary Keys
     Table|Column Name|Data Type|
