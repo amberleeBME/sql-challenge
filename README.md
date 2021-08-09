@@ -44,9 +44,8 @@ Tables were created and imported in the following order:
     ```
 * Foreign Keys
 
-    |Foreign Key |Reference
+    |Foreign Key \<table> (\<column>) |Reference \<table> (\<column>)
     |-----|----------------------------|
-    |\<table> (\<column>)|\<table> (\<column>)|
     |employees (emp_title_id)| titles (title_id)|
     |dept_emp (emp_no)|employees (emp_no)|
     |dept_emp (dept_no)|departments (dept_no)|
@@ -56,7 +55,8 @@ Tables were created and imported in the following order:
 
     Code Snippet:
     ```sql
-    ALTER TABLE "employees" ADD CONSTRAINT "fk_employees_emp_title_id" FOREIGN KEY("emp_title_id") REFERENCES "titles" ("title_id");
+    ALTER TABLE "employees" ADD CONSTRAINT "fk_employees_emp_title_id" 
+    FOREIGN KEY("emp_title_id") REFERENCES "titles" ("title_id");
     ```
 
 ## Data Analysis
