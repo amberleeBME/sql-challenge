@@ -13,61 +13,47 @@ Tables were created and imported in the following order:
 5. dept_emp
 6. salaries
 
-* Primary Keys
-    Table|Column Name|Data Type|
-    -----|-----------|---------|
-    titles|title_id|VARCHAR(30)|
-    employees|emp_no|INT|
-    departments|dept_no|VARCHAR(30)|
-
+* Primary Keys were created for each table
     Code Snippet:
     ```sql
-    CREATE TABLE "titles" (
-        "title_id" VARCHAR(30)   NOT NULL,
-        "title" VARCHAR(30)   NOT NULL,
-        CONSTRAINT "pk_titles" PRIMARY KEY (
-            "title_id"
-        )
+    CREATE TABLE titles (
+    title_id VARCHAR(30)   NOT NULL,
+    title VARCHAR(30)   NOT NULL,
+    PRIMARY KEY (title_id)
     );
     ```
-* Composite Keys
+* Foreign and Composite Keys were created for salareies and junction tables (dept_emp, dept_manager)
 
     Code Snippet:
     ```sql
-    CREATE TABLE "titles" (
-        "title_id" VARCHAR(30)   NOT NULL,
-        "title" VARCHAR(30)   NOT NULL,
-        CONSTRAINT "pk_titles" PRIMARY KEY (
-            "title_id"
-        )
+    CREATE TABLE dept_emp (
+    emp_no INT   NOT NULL,
+    dept_no VARCHAR(30)   NOT NULL,
+    FOREIGN KEY (emp_no) REFERENCES employees(emp_no),
+    FOREIGN KEY (dept_no) REFERENCES departments(dept_no),
+    PRIMARY KEY (emp_no, dept_no)
     );
-    ```
-* Foreign Keys
-
-    |Foreign Key \<table> (\<column>) |Reference \<table> (\<column>)
-    |-----|----------------------------|
-    |employees (emp_title_id)| titles (title_id)|
-    |dept_emp (emp_no)|employees (emp_no)|
-    |dept_emp (dept_no)|departments (dept_no)|
-    |dept_manager (dept_no)|departments (dept_no)|
-    |dept_manager (emp_no)|employees (emp_no)|
-    |salaries (emp_no)|employees (emp_no)|
-
-    Code Snippet:
-    ```sql
-    ALTER TABLE "employees" ADD CONSTRAINT "fk_employees_emp_title_id" 
-    FOREIGN KEY("emp_title_id") REFERENCES "titles" ("title_id");
     ```
 
 ## Data Analysis
+employee_queries.sql answers the following:
+1. List the following details of each employee: employee number, last name, first name, sex, and salary.
+2. List first name, last name, and hire date for employees who were hired in 1986.
+3. List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.
+4. List the department of each employee with the following information: employee number, last name, first name, and department name.
+5. List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
+6. List all employees in the Sales department, including their employee number, last name, first name, and department name.
+7. List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
+8. In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
 
 Code Snippet:
 ```sql
-    SELECT emp.emp_no AS "employee number", 
-    emp.last_name AS "last name", 
-    emp.first_name AS "first name", 
-    emp.sex, salaries.salary
-    FROM salaries
-    INNER JOIN employees e ON emp.emp_no=salaries.emp_no;
+SELECT e.emp_no AS "employee number", 
+e.last_name AS "last name", 
+e.first_name AS "first name", 
+e.sex, s.salary
+FROM salaries s
+INNER JOIN employees e ON e.emp_no=s.emp_no;
 ```
-> ### Visualizations
+Data Output:
+![Data Output Screenshot](/Images/Data_Output_Screenshot.png)
