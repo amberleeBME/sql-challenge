@@ -5,7 +5,7 @@
 
 
 ### Table Schema
-Tables were created and imported in the following order:
+Use [employee_schema](/EmployeeSQL/employee_schema.sql) to create the following tables (import data in the same order):
 1. titles
 2. employees
 3. departments
@@ -22,7 +22,7 @@ Tables were created and imported in the following order:
     PRIMARY KEY (title_id)
     );
     ```
-* Foreign and Composite Keys were created for salareies and junction tables (dept_emp, dept_manager)
+* Foreign and Composite Keys were created for salareies table and junction tables (dept_emp, dept_manager)
 
     Code Snippet:
     ```sql
@@ -36,7 +36,7 @@ Tables were created and imported in the following order:
     ```
 
 ## Data Analysis
-employee_queries.sql answers the following:
+Use [employee_queries](/EmployeeSQL/employee_queries.sql) to answer the following:
 1. List the following details of each employee: employee number, last name, first name, sex, and salary.
 2. List first name, last name, and hire date for employees who were hired in 1986.
 3. List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.
