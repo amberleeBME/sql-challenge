@@ -3,26 +3,16 @@
 ### Entity Relationship Diagram (ERD)
 ![Entity Relationship Diagram (ERD)](/Images/QuickDBD-employee_schema.png)
 
+*Note: Composite keys are used in the salaries, dept_manager, and dept_emp tables.*
 
 ### Table Schema
-Use [employee_schema](/EmployeeSQL/employee_schema.sql) to create the following tables (import data in the same order):
+Use [employee_schema](/EmployeeSQL/employee_schema.sql) to create the necessary tables. To avoid errors involving foreign keys, please create and import the data in the following order:
 1. titles
 2. employees
 3. departments
-4. dept_manager
+4. salaries 
 5. dept_emp
-6. salaries
-
-* Primary Keys were created for each table
-    Code Snippet:
-    ```sql
-    CREATE TABLE titles (
-    title_id VARCHAR(30)   NOT NULL,
-    title VARCHAR(30)   NOT NULL,
-    PRIMARY KEY (title_id)
-    );
-    ```
-* Foreign and Composite Keys were created for salareies table and junction tables (dept_emp, dept_manager)
+6. dept_manager
 
     Code Snippet:
     ```sql
@@ -56,4 +46,5 @@ FROM employees
 WHERE first_name= 'Hercules' AND last_name LIKE 'B%';
 ```
 Data Output:
+
 ![Data Output Screenshot](/Images/Data_Output_Screenshot.png)
