@@ -48,12 +48,12 @@ Use [employee_queries](/EmployeeSQL/employee_queries.sql) to answer the followin
 
 Code Snippet:
 ```sql
-SELECT e.emp_no AS "employee number", 
-e.last_name AS "last name", 
-e.first_name AS "first name", 
-e.sex, s.salary
-FROM salaries s
-INNER JOIN employees e ON e.emp_no=s.emp_no;
+-- 5. first name, last name, and sex of employees whose first name is "Hercules" and last names begin with "B"
+SELECT first_name AS "first name", 
+last_name AS "last name", 
+sex
+FROM employees
+WHERE first_name= 'Hercules' AND last_name LIKE 'B%';
 ```
 Data Output:
 ![Data Output Screenshot](/Images/Data_Output_Screenshot.png)
