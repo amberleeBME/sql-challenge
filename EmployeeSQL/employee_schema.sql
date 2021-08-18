@@ -30,18 +30,30 @@ CREATE TABLE "departments" (
 );
 
 CREATE TABLE "dept_emp" (
+    "de_id" INT   NOT NULL,
     "emp_no" INT   NOT NULL,
-    "dept_no" VARCHAR(30)   NOT NULL
+    "dept_no" VARCHAR(30)   NOT NULL,
+    CONSTRAINT "pk_dept_emp" PRIMARY KEY (
+        "de_id"
+     )
 );
 
 CREATE TABLE "dept_manager" (
+    "dm_id" INT   NOT NULL,
     "dept_no" VARCHAR(30)   NOT NULL,
-    "emp_no" INT   NOT NULL
+    "emp_no" INT   NOT NULL,
+    CONSTRAINT "pk_dept_manager" PRIMARY KEY (
+        "dm_id"
+     )
 );
 
 CREATE TABLE "salaries" (
+    "salaries_id" INT   NOT NULL,
     "emp_no" INT   NOT NULL,
-    "salary" INT   NOT NULL
+    "salary" INT   NOT NULL,
+    CONSTRAINT "pk_salaries" PRIMARY KEY (
+        "salaries_id"
+     )
 );
 
 ALTER TABLE "employees" ADD CONSTRAINT "fk_employees_emp_title_id" FOREIGN KEY("emp_title_id")
